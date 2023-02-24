@@ -22,6 +22,7 @@ jobs:
         run: |
            pwd
            ls -a
+           ls /home/runner/work/test
            echo "azhar"
            echo azher
       - uses: actions/checkout@v2
