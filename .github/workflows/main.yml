@@ -23,6 +23,7 @@ jobs:
         env:
           SONAR_TOKEN: sqa_f658ef5fbb92484d00c5b2331c21cfe09830404e
           SONAR_HOST_URL: http://54.73.70.164:9000
+          SONAR_PROJECT_KEY: testsonar
           secrets: inherit
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
