@@ -20,7 +20,7 @@ jobs:
       - name: SonarQube Scan
         env:
           SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
-        run: mvn sonar:sonar -Dsonar.projectKey=testsonar2
+        run: sonar-scanner -Dsonar.projectKey=testsonar2
       - name: List Files
         run: |
            pwd
