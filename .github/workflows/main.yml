@@ -16,6 +16,8 @@ jobs:
     env:
       sonar.projectKey: testsonar
     steps:
+      - name: Create SonarQube properties file
+        run: echo "sonar.projectKey=testsonar2" > sonar-project.properties
       - name: List Files
         run: |
            pwd
