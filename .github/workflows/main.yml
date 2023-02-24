@@ -3,6 +3,13 @@ on:
   push:
     branches:
       - master # or the name of your main branch
+      
+env:
+  SONAR_TOKEN: sqa_f658ef5fbb92484d00c5b2331c21cfe09830404e
+  SONAR_HOST_URL: http://54.73.70.164:9000
+  SONAR_PROJECT_KEY: testsonar2
+  secrets: inherit
+  
 jobs:
   build:
     name: Build
@@ -20,11 +27,11 @@ jobs:
         with:
           fetch-depth: 0
       - uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: sqa_f658ef5fbb92484d00c5b2331c21cfe09830404e
-          SONAR_HOST_URL: http://54.73.70.164:9000
-          SONAR_PROJECT_KEY: testsonar
-          secrets: inherit
+        with:
+          sonar-project-key: ${{ env.SONAR_PROJECT_KEY }}
+          sonar-token: ${{ env.SONAR_TOKEN }}
+          sonar-host-url: ${{ env.SONAR_HOST_URL }}
+        
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
       # - uses: sonarsource/sonarqube-quality-gate-action@master
