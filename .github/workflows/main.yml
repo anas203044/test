@@ -7,6 +7,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      sonar.projectKey: testsonar
     steps:
       - name: List Files
         run: |
