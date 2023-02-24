@@ -5,7 +5,7 @@ on:
       - master # or the name of your main branch
       
 env:
-  SONAR_TOKEN: sqa_f658ef5fbb92484d00c5b2331c21cfe09830404e
+  SONAR_TOKEN: squ_92ce500b4383353ef21219293c07ffff35128a09
   SONAR_HOST_URL: http://54.73.70.164:9000
   SONAR_PROJECT_KEY: testsonar2
   
@@ -21,21 +21,17 @@ jobs:
            pwd
            ls -a
            echo testing
+      - name: Create SonarQube project
+        run: |
+          curl --include --request POST -u ${{ env.SONAR_TOKEN }}: '${{ env.SONAR_HOST_URL }}/api/projects/create?name=${{ env.SONAR_PROJECT_KEY }}&project=${{ env.SONAR_PROJECT_KEY }}'
+      
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - name: Create SonarQube properties file
-        run: echo "sonar.projectKey=testsonar" > sonar-project.properties
+        run: echo "sonar.projectKey=${{ env.SONAR_PROJECT_KEY }}" > sonar-project.properties
       - uses: sonarsource/sonarqube-scan-action@master
         with:
-          sonar-project-key: testsonar2
           sonar-token: ${{ env.SONAR_TOKEN }}
           sonar-host-url: ${{ env.SONAR_HOST_URL }}
-               
-      # If you wish to fail your job when the Quality Gate is red, uncomment the
-      # following lines. This would typically be used to fail a deployment.
-      # - uses: sonarsource/sonarqube-quality-gate-action@master
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
