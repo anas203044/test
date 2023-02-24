@@ -17,6 +17,10 @@ jobs:
     env:
       sonar.projectKey: testsonar
     steps:
+      - name: SonarQube Scan
+        env:
+          SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
+        run: mvn sonar:sonar -Dsonar.projectKey=testsonar2
       - name: List Files
         run: |
            pwd
@@ -31,8 +35,7 @@ jobs:
           sonar-project-key: testsonar2
           sonar-token: ${{ env.SONAR_TOKEN }}
           sonar-host-url: ${{ env.SONAR_HOST_URL }}
-        run: mvn sonar:sonar -Dsonar.projectKey=testsonar2
-        
+               
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
       # - uses: sonarsource/sonarqube-quality-gate-action@master
