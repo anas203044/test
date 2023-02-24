@@ -23,6 +23,9 @@ jobs:
            pwd
            ls -a
            ls /home/runner/work/test
+           ls /home/runner/work/
+           ls ls /home/runner/
+           ls /home
            echo "azhar"
            echo azher
       - uses: actions/checkout@v2
