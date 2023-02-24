@@ -16,21 +16,16 @@ jobs:
     env:
       sonar.projectKey: testsonar
     steps:
-      - name: Create SonarQube properties file
-        run: echo "sonar.projectKey=testsonar2" > sonar-project.properties
       - name: List Files
         run: |
            pwd
            ls -a
-           ls /home/runner/work/test
-           ls /home/runner/work/
-           ls ls /home/runner/
-           ls /home
-           echo "azhar"
-           echo azher
+           echo testing
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Create SonarQube properties file
+        run: echo "sonar.projectKey=testsonar" > sonar-project.properties
       - uses: sonarsource/sonarqube-scan-action@master
         with:
           sonar-project-key: testsonar2
