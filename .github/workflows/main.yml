@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0
       - uses: sonarsource/sonarqube-scan-action@master
         with:
-          sonar-project-key: ${{ env.SONAR_PROJECT_KEY }}
+          sonar-project-key: testsonar2
           sonar-token: ${{ env.SONAR_TOKEN }}
           sonar-host-url: ${{ env.SONAR_HOST_URL }}
         
