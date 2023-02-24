@@ -18,6 +18,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: sonarsource/sonarqube-scan-action@master
+        secrets: inherit
         env:
           SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
           SONAR_HOST_URL: http://54.73.70.164:9000
