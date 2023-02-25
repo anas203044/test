@@ -1,14 +1,19 @@
-name: my-workflow
-
+name: My Workflow
 on:
   push:
     branches:
       - master
 
+env:
+  SONAR_TOKEN: squ_92ce500b4383353ef21219293c07ffff35128a09
+  SONAR_HOST_URL: http://54.73.70.164:9000
+
 jobs:
-  build_and_scan:
-    name: Build and Scan
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Build and Scan
-        uses: anas203044/global/globalaction@main
+      - uses: my-org/build-action@v1
+        with:
+          sonar-token: ${{ env.SONAR_TOKEN }}
+          sonar-host-url: ${{ env.SONAR_HOST_URL }}
