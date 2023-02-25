@@ -10,4 +10,4 @@ jobs:
         with:
           sonar-token: squ_92ce500b4383353ef21219293c07ffff35128a09
           sonar-host-url: http://54.73.70.164:9000
-          sonar-project-key: test-sonar
+          sonar-project-key: test-sonar5
