@@ -7,7 +7,7 @@ on:
 env:
   SONAR_TOKEN: squ_92ce500b4383353ef21219293c07ffff35128a09
   SONAR_HOST_URL: http://54.73.70.164:9000
-  SONAR_PROJECT_KEY: ${{ github.repository }}
+  SONAR_PROJECT_KEY: $(basename ${{ github.repository }})
   
 jobs:
   build:
