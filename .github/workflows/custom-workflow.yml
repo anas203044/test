@@ -19,7 +19,7 @@ jobs:
       - name: Checkout private repository
         uses: actions/checkout@v2
         with:
-          repository: orginfratec/action_file/globalaction
+          repository: anas203044/orginfratec/action_file/globalaction
           token: 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
           ref: main
           path: action_file/globalaction
