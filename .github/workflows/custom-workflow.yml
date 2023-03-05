@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Use action from organization repository
-        uses: orginfratec/action_file/action@master
+        uses: orginfratec/action_file@master
         with:
           repository: orginfratec/action_file
           token: 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
