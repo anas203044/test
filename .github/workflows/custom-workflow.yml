@@ -13,6 +13,6 @@ jobs:
         uses: orginfratec/action_file/action@master
         with:
           repository: orginfratec/action_file
-          token: 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
+          token: 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
           ref: main
           path: action_file
