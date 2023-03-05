@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Use action from organization repository
-        uses: orginfratec/action_file/action@main
+        uses: orginfratec/action_file/action@master
         with:
           repository: anas203044/private-test
           token: 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
