@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout private repository
-        uses: actions/checkout@v2
+        uses: orginfratec/action_file/actions/checkout@v2
         with:
-          repository: anas203044/action_file/globalaction
+          repository: orginfratec/action_file/globalaction
           token: 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
           ref: main
           path: action_file/globalaction
@@ -31,9 +31,9 @@ jobs:
           sonar-host-url: ${{ env.SONAR_HOST_URL }}
         
       - name: Checkout private repository
-        uses: actions/checkout@v2
+        uses: orginfratec/action_file/actions/checkout@v2
         with:
-          repository: anas203044/action_file/globalaction
+          repository: orginfratec/action_file/globalaction
           token: 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
           ref: main
           path: action_file/globalaction
