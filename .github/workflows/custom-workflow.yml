@@ -1,39 +1,18 @@
-name: Use Private Action
+name: My Workflow
 
-on:
-  push:
-    branches:
-      - "*"
-  pull_request:
-    branches:
-      - "*"
-      
-env:
-  SONAR_TOKEN: squ_92ce500b4383353ef21219293c07ffff35128a09
-  SONAR_HOST_URL: http://54.73.70.164:9000
+on: push
 
 jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout private repository
-        uses: orginfratec/action_file@master
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Use action from organization repository
+        uses: orginfratec/action_file/action@main
         with:
-          repository: orginfratec/action_file/globalaction
+          repository: anas203044/private-test
           token: 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
           ref: main
-          path: action_file/globalaction
-
-      - name: Use action from private repository
-        uses: ./action_file/globalaction
-        with:
-          sonar-token: ${{ env.SONAR_TOKEN }}
-          sonar-host-url: ${{ env.SONAR_HOST_URL }}
-        
-      - name: Checkout private repository
-        uses: orginfratec/action_file@master
-        with:
-          repository: orginfratec/action_file/globalaction
-          token: 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
-          ref: main
-          path: action_file/globalaction
+          path: action_file
