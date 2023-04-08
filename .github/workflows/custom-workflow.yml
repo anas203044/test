@@ -1,18 +1,55 @@
-name: My Workflow
-
-on: push
-
-jobs:
-  my-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+name: Build
+on:
+  push:
+    branches:
+      - sonar_branch # or the name of your main branch
       
-      - name: Use action from organization repository
-        uses: orginfratec/action_file@master
+env:
+  SONAR_TOKEN: squ_92ce500b4383353ef21219293c07ffff35128a09
+  SONAR_HOST_URL: http://54.73.70.164:9000
+  SONAR_PROJECT_KEY: sonar_test
+  
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      sonar.projectKey: testsonar
+    steps:
+      #- name: Create SonarQube project
+      #  run: |
+      #   curl --include --request POST -u ${{ env.SONAR_TOKEN }}: '${{ env.SONAR_HOST_URL }}/api/projects/create?name=${{ env.SONAR_PROJECT_KEY }}&project=${{ env.SONAR_PROJECT_KEY }}'
+      
+      - uses: actions/checkout@v2
         with:
-          repository: orginfratec/action_file
-          token: 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
-          ref: main
-          path: action_file
+          fetch-depth: 0
+      #- name: Create SonarQube properties file
+      #  run: echo "sonar.projectKey=${{ env.SONAR_PROJECT_KEY }}" > sonar-project.properties
+         
+      
+      - name: Build and run tests
+        run: |
+          # Replace this with the command to build and run your tests
+          echo "Building and running tests..."
+          mkdir -p .nyc_output
+          npx nyc report --reporter=lcov
+      - name: Generate code coverage report
+        run: |
+          # Replace this with the command to generate your code coverage report
+          echo "Generating code coverage report..."
+          npm run test
+      - name: Send code coverage data to SonarQube
+        uses: sonarsource/sonarqube-scan-action@v1
+        with:
+          projectBaseDir: .
+          sonar-token: ${{ env.SONAR_TOKEN }}
+          sonar-host-url: ${{ env.SONAR_HOST_URL }}
+          extra-properties: |
+            sonar.projectKey=${{ env.SONAR_PROJECT_KEY }}
+            sonar.coverageReportPaths=/home/runner/work/test40/test40/.nyc_output/coverage.xml
+            
+            
+      - uses: sonarsource/sonarqube-scan-action@master
+        with:
+          sonar-token: ${{ env.SONAR_TOKEN }}
+          sonar-host-url: ${{ env.SONAR_HOST_URL }}
