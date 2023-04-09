@@ -49,11 +49,9 @@ jobs:
       - name: Send code coverage data to SonarQube
         uses: sonarsource/sonarqube-scan-action@master
         with:
-          projectBaseDir: .
           sonar-token: ${{ env.SONAR_TOKEN }}
           sonar-host-url: ${{ env.SONAR_HOST_URL }}
           extra-properties: |
-            sonar.projectKey=${{ env.SONAR_PROJECT_KEY }}
             sonar.coverageReportPaths=coverage/lcov.info
             
             
