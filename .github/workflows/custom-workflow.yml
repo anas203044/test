@@ -32,6 +32,7 @@ jobs:
           # Replace this with the command to build and run your tests
           echo "Building and running tests..."
           mkdir -p .nyc_output
+          npm install -f
           npm install mocha -g
           
       - name: Generate code coverage report
