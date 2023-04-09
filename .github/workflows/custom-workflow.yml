@@ -35,6 +35,17 @@ jobs:
           #npm install -f
           npm install mocha -g
           
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Build with Maven
+        run: mvn clean package
+
+      - name: Generate JaCoCo report
+        run: mvn jacoco:report
+          
       - name: Generate code coverage report
         run: |
           # Replace this with the command to generate your code coverage report
