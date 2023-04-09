@@ -25,27 +25,6 @@ jobs:
           fetch-depth: 0
       #- name: Create SonarQube properties file
       #  run: echo "sonar.projectKey=${{ env.SONAR_PROJECT_KEY }}" > sonar-project.properties
-         
-      
-      - name: Build and run tests
-        run: |
-          # Replace this with the command to build and run your tests
-          echo "Building and running tests..."
-          mkdir -p .nyc_output
-          #npm install -f
-          npm install mocha -g
-          
-      - name: Set up Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '11'
-
-      - name: Build with Maven
-        run: mvn clean package
-
-      - name: Generate JaCoCo report
-        run: mvn jacoco:report
           
       - name: Generate code coverage report
         run: |
@@ -65,7 +44,7 @@ jobs:
           sonar-token: ${{ env.SONAR_TOKEN }}
           sonar-host-url: ${{ env.SONAR_HOST_URL }}
           extra-properties: |
-            sonar.coverageReportPaths=coverage/lcov.info
+            sonar.javascript.lcov.reportPaths=coverage/lcov.info
             
             
  #     - uses: sonarsource/sonarqube-scan-action@master
