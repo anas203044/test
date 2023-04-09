@@ -39,7 +39,7 @@ jobs:
           # Replace this with the command to generate your code coverage report
           echo "Generating code coverage report..."
           ls
-          npx nyc --reporter=lcov --exclude "node_modules/**" mocha **/**/*.js --timeout 50000 --env local -a --exit || true
+          npx nyc --reporter=lcov --exclude "node_modules/**" mocha **/**/*.js | true
           ls
           rm -rf node_modules
           cd coverage
