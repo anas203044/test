@@ -25,6 +25,14 @@ jobs:
           fetch-depth: 0
       #- name: Create SonarQube properties file
       #  run: echo "sonar.projectKey=${{ env.SONAR_PROJECT_KEY }}" > sonar-project.properties
+      
+      - name: Build and run tests
+        run: |
+          # Replace this with the command to build and run your tests
+          echo "Building and running tests..."
+          mkdir -p .nyc_output
+          #npm install -f
+          npm install mocha -g
           
       - name: Generate code coverage report
         run: |
