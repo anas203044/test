@@ -34,7 +34,6 @@ jobs:
           mkdir -p .nyc_output
           #npm install -f
           npm install mocha -g
-          npm install -g jacoco
           
       - name: Generate code coverage report
         run: |
