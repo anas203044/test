@@ -38,6 +38,7 @@ jobs:
         run: |
           # Replace this with the command to generate your code coverage report
           echo "Generating code coverage report..."
+          ls
           npx nyc --reporter=lcov mocha *.js --timeout 50000 --env local
         
       - name: Send code coverage data to SonarQube
