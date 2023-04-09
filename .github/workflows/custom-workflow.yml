@@ -32,7 +32,7 @@ jobs:
           # Replace this with the command to build and run your tests
           echo "Building and running tests..."
           mkdir -p .nyc_output
-          npm install -f
+          #npm install -f
           npm install mocha -g
           npm install -g jacoco
           
@@ -41,7 +41,7 @@ jobs:
           # Replace this with the command to generate your code coverage report
           echo "Generating code coverage report..."
           ls
-          npx nyc --reporter=jacoco mocha  **/*.js --timeout 50000 --env local -a --exit || true
+          npx nyc --reporter=istanbul mocha  **/*.js --timeout 50000 --env local -a --exit || true
           ls
           cd coverage 
           ls
